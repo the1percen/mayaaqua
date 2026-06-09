@@ -22,7 +22,7 @@
             <div class="col-lg-6" data-aos="fade-right">
                 <div class="position-relative" style="border-radius: 20px; overflow: hidden; box-shadow: 0 15px 45px rgba(0,0,0,0.08);">
                     {% if product.image %}
-                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid w-100" style="object-fit: cover; height: 450px;">
+                    <img src="{% static 'images/'|add:product.image.name %}" alt="{{ product.name }}" class="img-fluid w-100" style="object-fit: cover; height: 450px;">
                     {% else %}
                     <img src="https://picsum.photos/600/400?random=15" alt="{{ product.name }}" class="img-fluid w-100" style="object-fit: cover; height: 450px;">
                     {% endif %}
@@ -79,7 +79,7 @@
             <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00">
                 <div class="product-card">
                     {% if rel_product.image %}
-                    <img src="{{ rel_product.image.url }}" alt="{{ rel_product.name }}">
+                    <img src="{% static 'images/'|add:rel_product.image.name %}" alt="{{ rel_product.name }}">
                     {% else %}
                     <img src="https://picsum.photos/600/400?random={{ forloop.counter|add:5 }}" alt="{{ rel_product.name }}">
                     {% endif %}

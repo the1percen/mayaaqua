@@ -22,7 +22,7 @@
             <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00">
                 <div class="gallery-item">
                     {% if image.image %}
-                    <img src="{{ image.image.url }}" alt="{{ image.caption }}">
+                    <img src="{% static 'images/'|add:image.image.name %}" alt="{{ image.caption }}">
                     {% else %}
                     <img src="https://picsum.photos/600/400?random={{ forloop.counter }}" alt="{{ image.caption }}">
                     {% endif %}

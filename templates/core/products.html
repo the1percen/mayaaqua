@@ -34,7 +34,7 @@
             <div class="col-md-6 col-lg-4 product-card-wrapper" data-category="{{ product.category.name }}" data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00">
                 <div class="product-card">
                     {% if product.image %}
-                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    <img src="{% static 'images/'|add:product.image.name %}" alt="{{ product.name }}">
                     {% else %}
                     <img src="https://picsum.photos/600/400?random={{ forloop.counter }}" alt="{{ product.name }}">
                     {% endif %}
