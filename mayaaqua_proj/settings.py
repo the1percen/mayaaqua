@@ -80,7 +80,7 @@ WSGI_APPLICATION = "mayaaqua_proj.wsgi.application"
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=config('DATABASE_URL', default='postgresql://postgres:MayaAqua123@db.rilmbznpiktfemshwmrb.supabase.co:5432/postgres')
+        default=config('DATABASE_URL', default='postgresql://postgres.rilmbznpiktfemshwmrb:MayaAqua123@aws-1-ap-south-1.pooler.supabase.com:5432/postgres')
     )
 }
 
