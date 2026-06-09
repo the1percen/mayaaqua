@@ -60,6 +60,10 @@ def populate():
             caption=f'Maya Aqua Solutions Installation #{i}'
         )
     
+    # Add new basic RO images
+    GalleryImage.objects.create(image='gallery/gallery_6.png', caption='Standard Reverse Osmosis System')
+    GalleryImage.objects.create(image='gallery/gallery_7.png', caption='Industrial Water Filter System')
+    
     print("Database populated successfully!")
 
 if __name__ == '__main__':
