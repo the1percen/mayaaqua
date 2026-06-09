@@ -1,0 +1,816 @@
+/* ============================================
+   Maya Aqua Solutions - Premium CSS
+   ============================================ */
+
+/* --- CSS Variables --- */
+:root {
+    --deep-blue: #0A4A6E;
+    --aqua-green: #1D9E75;
+    --sky-blue: #00C6FF;
+    --dark: #062A40;
+    --light: #F0F8FF;
+    --glass: rgba(255, 255, 255, 0.12);
+    --glass-border: rgba(255, 255, 255, 0.2);
+}
+
+/* --- Global Reset & Base --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--light);
+    overflow-x: hidden;
+    color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* --- Text Gradient --- */
+.text-gradient {
+    background: linear-gradient(135deg, var(--aqua-green), var(--sky-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.navbar-brand .text-gradient {
+    font-size: 1.6rem;
+}
+
+/* ============================================
+   GLASSMORPHISM NAVBAR
+   ============================================ */
+.glass-navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: transparent;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s;
+    padding: 15px 0;
+}
+
+.glass-navbar.scrolled {
+    background: rgba(10, 74, 110, 0.95);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+    padding: 10px 0;
+}
+
+.navbar-solid {
+    background: #0A4A6E !important;
+}
+
+.navbar-solid .nav-link {
+    color: white !important;
+}
+
+.glass-navbar .nav-link {
+    color: white;
+    font-weight: 500;
+    padding: 10px 18px;
+    transition: 0.3s;
+    position: relative;
+}
+
+.glass-navbar .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--sky-blue);
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: 0.3s;
+}
+
+.glass-navbar .nav-link:hover::after {
+    width: 70%;
+}
+
+.glass-navbar.scrolled .nav-link {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* --- Call Button --- */
+.call-btn {
+    background: linear-gradient(135deg, var(--aqua-green), var(--sky-blue));
+    border: none;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 198, 255, 0.3);
+    transition: all 0.3s;
+}
+
+.call-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(0, 198, 255, 0.5);
+    color: white;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #062A40 0%, #0A4A6E 40%, #0D5F8A 70%, #1D9E75 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(0, 198, 255, 0.15) 0%, transparent 60%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    color: white;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    font-weight: 300;
+    opacity: 0.85;
+    max-width: 600px;
+    margin: 0 auto 35px;
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+}
+
+/* ============================================
+   FLOATING BUBBLES
+   ============================================ */
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    animation: floatUp linear infinite;
+    pointer-events: none;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(-20vh) scale(1);
+        opacity: 0;
+    }
+}
+
+.bubble:nth-child(1) {
+    width: 20px;
+    height: 20px;
+    left: 5%;
+    animation-duration: 8s;
+    animation-delay: 0s;
+}
+
+.bubble:nth-child(2) {
+    width: 35px;
+    height: 35px;
+    left: 15%;
+    animation-duration: 10s;
+    animation-delay: 1s;
+}
+
+.bubble:nth-child(3) {
+    width: 50px;
+    height: 50px;
+    left: 30%;
+    animation-duration: 12s;
+    animation-delay: 2s;
+}
+
+.bubble:nth-child(4) {
+    width: 25px;
+    height: 25px;
+    left: 45%;
+    animation-duration: 14s;
+    animation-delay: 3s;
+}
+
+.bubble:nth-child(5) {
+    width: 60px;
+    height: 60px;
+    left: 55%;
+    animation-duration: 16s;
+    animation-delay: 4s;
+}
+
+.bubble:nth-child(6) {
+    width: 40px;
+    height: 40px;
+    left: 70%;
+    animation-duration: 18s;
+    animation-delay: 5s;
+}
+
+.bubble:nth-child(7) {
+    width: 80px;
+    height: 80px;
+    left: 80%;
+    animation-duration: 20s;
+    animation-delay: 6s;
+}
+
+.bubble:nth-child(8) {
+    width: 30px;
+    height: 30px;
+    left: 90%;
+    animation-duration: 9s;
+    animation-delay: 8s;
+}
+
+/* ============================================
+   WAVE DIVIDER
+   ============================================ */
+.wave-divider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.wave-divider svg {
+    display: block;
+    width: 100%;
+    height: 60px;
+}
+
+.wave-divider-flip {
+    transform: rotate(180deg);
+}
+
+/* ============================================
+   STATS SECTION
+   ============================================ */
+.stats-section {
+    background: var(--deep-blue);
+    padding: 80px 0;
+    color: white;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 20px;
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--sky-blue);
+}
+
+.stat-label {
+    font-size: 1rem;
+    opacity: 0.8;
+    margin-top: 5px;
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    color: var(--aqua-green);
+    margin-bottom: 15px;
+}
+
+/* ============================================
+   PRODUCT CARD
+   ============================================ */
+.product-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease;
+    border: none;
+    height: 100%;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(10, 74, 110, 0.15);
+}
+
+.product-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.product-card .card-body {
+    padding: 25px;
+}
+
+.product-card .category-badge {
+    background: linear-gradient(135deg, var(--aqua-green), var(--sky-blue));
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+/* ============================================
+   FILTER BUTTONS
+   ============================================ */
+.filter-btn {
+    background: transparent;
+    border: 2px solid var(--deep-blue);
+    color: var(--deep-blue);
+    border-radius: 25px;
+    padding: 8px 24px;
+    margin: 5px;
+    font-weight: 600;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--deep-blue);
+    color: white;
+}
+
+/* ============================================
+   WHY CHOOSE US CARDS
+   ============================================ */
+.why-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.why-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--deep-blue), var(--aqua-green), var(--sky-blue));
+}
+
+.why-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(10, 74, 110, 0.12);
+}
+
+.why-card-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--deep-blue), var(--aqua-green));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: white;
+    font-size: 1.8rem;
+}
+
+/* ============================================
+   GLASSMORPHISM TESTIMONIALS
+   ============================================ */
+.testimonial-section {
+    background: linear-gradient(135deg, var(--deep-blue), #0D5F8A, var(--aqua-green));
+    padding: 100px 0;
+}
+
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 35px;
+    color: white;
+    transition: all 0.3s;
+    height: 100%;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.testimonial-stars {
+    color: #FFD700;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.testimonial-name {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-top: 15px;
+}
+
+/* ============================================
+   GALLERY
+   ============================================ */
+.gallery-item {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    margin-bottom: 24px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: all 0.5s;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+
+.gallery-item .gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10, 74, 110, 0.8), transparent);
+    opacity: 0;
+    transition: all 0.4s;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-overlay p {
+    color: white;
+    margin: 0;
+    font-weight: 600;
+}
+
+/* ============================================
+   LIGHTBOX
+   ============================================ */
+.lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-overlay.active {
+    display: flex;
+}
+
+.lightbox-overlay img {
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: 12px;
+    box-shadow: 0 0 40px rgba(0, 198, 255, 0.3);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 10000;
+    background: none;
+    border: none;
+}
+
+/* ============================================
+   WHATSAPP CTA
+   ============================================ */
+.whatsapp-cta {
+    background: linear-gradient(135deg, #1D9E75, #25D366);
+    padding: 60px 0;
+    text-align: center;
+    color: white;
+}
+
+.whatsapp-cta h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.whatsapp-btn {
+    background: white;
+    color: #25D366;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.whatsapp-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    color: #1D9E75;
+}
+
+/* ============================================
+   CONTACT FORM
+   ============================================ */
+.contact-form-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+.contact-info-card {
+    background: linear-gradient(135deg, var(--deep-blue), var(--aqua-green));
+    border-radius: 20px;
+    padding: 40px;
+    color: white;
+    height: 100%;
+}
+
+.contact-info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.contact-info-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* ============================================
+   ABOUT PAGE
+   ============================================ */
+.about-hero {
+    background: linear-gradient(135deg, var(--deep-blue), var(--aqua-green));
+    padding: 120px 0 80px;
+    color: white;
+    text-align: center;
+}
+
+/* ============================================
+   PAGE HEADER (Products, Gallery, Contact)
+   ============================================ */
+.page-header {
+    background: linear-gradient(135deg, var(--deep-blue), #0D5F8A);
+    padding: 120px 0 60px;
+    color: white;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+.page-header p {
+    opacity: 0.8;
+    font-size: 1.1rem;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+    background: var(--dark);
+    color: white;
+    padding-top: 60px;
+    padding-bottom: 20px;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: 0.3s;
+    display: block;
+    padding: 4px 0;
+}
+
+.footer-links a:hover {
+    color: var(--sky-blue);
+    padding-left: 5px;
+}
+
+.social-links a {
+    display: inline-flex;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    margin-right: 10px;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.social-links a:hover {
+    background: var(--aqua-green);
+    transform: translateY(-3px);
+}
+
+/* ============================================
+   FORM CONTROLS
+   ============================================ */
+.form-control {
+    border-radius: 12px;
+    padding: 14px 20px;
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 3px rgba(0, 198, 255, 0.2);
+    border-color: var(--sky-blue);
+}
+
+/* ============================================
+   PRODUCT DETAIL
+   ============================================ */
+.detail-features li {
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+    list-style: none;
+}
+
+.detail-features li::before {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: var(--aqua-green);
+    margin-right: 10px;
+}
+
+/* ============================================
+   SECTION TITLES
+   ============================================ */
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    color: var(--dark);
+}
+
+.section-subtitle {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 50px;
+}
+
+/* ============================================
+   CUSTOM SCROLLBAR
+   ============================================ */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--light);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--deep-blue), var(--aqua-green));
+    border-radius: 4px;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+.badge-premium {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+@media (max-width: 992px) {
+    .section-title {
+        font-size: 2rem;
+    }
+    .stats-section {
+        padding: 50px 0;
+    }
+    .stat-number {
+        font-size: 2.2rem;
+    }
+    .testimonial-section {
+        padding: 60px 0;
+    }
+    .whatsapp-cta h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-header h1 {
+        font-size: 2.2rem;
+    }
+    .page-header {
+        padding: 100px 0 40px;
+    }
+    .contact-form-card,
+    .contact-info-card {
+        padding: 25px;
+    }
+    .why-card {
+        margin-bottom: 20px;
+    }
+    .footer {
+        text-align: center;
+    }
+    .about-hero {
+        padding: 100px 0 60px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    .navbar-brand .text-gradient {
+        font-size: 1.3rem;
+    }
+    .whatsapp-btn {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+}

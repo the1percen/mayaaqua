@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Gallery - Maya Aqua Solutions{% endblock %}
+{% block meta_desc %}View our gallery of water purifier installations, commercial plants, and our service team in action.{% endblock %}
+
+{% block content %}
+
+<!-- ======== PAGE HEADER ======== -->
+<section class="page-header">
+    <div class="container" data-aos="fade-up">
+        <h1>Our Gallery</h1>
+        <p>Take a look at our installations, water testing, and team in action.</p>
+    </div>
+</section>
+
+<!-- ======== GALLERY SECTION ======== -->
+<section class="py-5" style="background: var(--light);">
+    <div class="container">
+        <div class="row g-4">
+            {% for image in images %}
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00">
+                <div class="gallery-item">
+                    {% if image.image %}
+                    <img src="{{ image.image.url }}" alt="{{ image.caption }}">
+                    {% else %}
+                    <img src="https://picsum.photos/600/400?random={{ forloop.counter }}" alt="{{ image.caption }}">
+                    {% endif %}
+                    <div class="gallery-overlay">
+                        <p>{{ image.caption|default:"Maya Aqua Installation" }}</p>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center py-5">
+                <i class="fa-solid fa-images fa-3x text-muted mb-3"></i>
+                <p class="text-muted">No images found in the gallery. Check back later!</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

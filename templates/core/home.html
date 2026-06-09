@@ -1,0 +1,367 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Maya Aqua Solutions - Premium Water Purifiers for Home & Business{% endblock %}
+{% block meta_desc %}Home of premium water purification solutions. RO, softeners, and commercial filtration in Chennai.{% endblock %}
+
+{% block content %}
+
+<!-- ======== HERO SECTION ======== -->
+<section class="hero-section" style="background-image: linear-gradient(135deg, rgba(6, 42, 64, 0.9) 0%, rgba(10, 74, 110, 0.9) 40%, rgba(13, 95, 138, 0.9) 70%, rgba(29, 158, 117, 0.9) 100%), url('https://picsum.photos/1200/800?random=20'); background-size: cover; background-position: center;">
+    <div class="hero-overlay"></div>
+
+    <!-- Floating Bubbles -->
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+
+    <div class="hero-content" data-aos="fade-up">
+        <span class="badge-premium">
+            <i class="fa-solid fa-droplet"></i> Premium Water Solutions
+        </span>
+        <h1 class="hero-title">
+            Pure Water, <br>
+            <span class="text-gradient">Healthy Life</span>
+        </h1>
+        <p class="hero-subtitle">
+            Transforming yellow water to white clean water with advanced RO systems, softener plants, and commercial filtration solutions.
+        </p>
+        <a href="{% url 'products' %}" class="btn call-btn btn-lg rounded-pill px-5 py-3 text-white fw-bold">
+            <i class="fa-solid fa-droplet me-2"></i>Explore Products
+        </a>
+    </div>
+</section>
+
+<!-- ======== WAVE DIVIDER (Hero → Stats) ======== -->
+<div class="wave-divider">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+        <path fill="#0A4A6E" d="M0,40 C360,100 1080,0 1440,60 L1440,100 L0,100 Z"></path>
+    </svg>
+</div>
+
+<!-- ======== STATS SECTION ======== -->
+<section class="stats-section">
+    <div class="container">
+        <div class="row" data-aos="fade-up">
+            <div class="col-6 col-lg-3">
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fa-solid fa-face-smile"></i></div>
+                    <div class="stat-number" data-target="{% if company %}{{ company.stats_happy_clients }}{% else %}500{% endif %}">0+</div>
+                    <div class="stat-label">Happy Clients</div>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fa-solid fa-water"></i></div>
+                    <div class="stat-number" data-target="{% if company %}{{ company.stats_products_installed }}{% else %}1200{% endif %}">0+</div>
+                    <div class="stat-label">Products Installed</div>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fa-solid fa-city"></i></div>
+                    <div class="stat-number" data-target="{% if company %}{{ company.stats_cities_served }}{% else %}25{% endif %}">0+</div>
+                    <div class="stat-label">Cities Served</div>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fa-solid fa-award"></i></div>
+                    <div class="stat-number" data-target="{% if company %}{{ company.stats_years_experience }}{% else %}20{% endif %}">0+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ======== WAVE DIVIDER (Stats → Products) ======== -->
+<div class="wave-divider wave-divider-flip">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+        <path fill="#0A4A6E" d="M0,40 C360,100 1080,0 1440,60 L1440,100 L0,100 Z"></path>
+    </svg>
+</div>
+
+<!-- ======== FEATURED PRODUCTS ======== -->
+<section class="py-5" style="background: var(--light);">
+    <div class="container py-5">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="section-title">Our Premium Products</h2>
+            <p class="section-subtitle">Discover our range of advanced water purification solutions designed for every need.</p>
+        </div>
+        <div class="row g-4">
+            {% for product in featured_products %}
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00">
+                <div class="product-card">
+                    {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    {% else %}
+                    <img src="https://picsum.photos/600/400?random={{ forloop.counter }}" alt="{{ product.name }}">
+                    {% endif %}
+                    <div class="card-body">
+                        {% if product.category %}
+                        <span class="category-badge">{{ product.category.name }}</span>
+                        {% endif %}
+                        <h5 class="fw-bold mt-2">{{ product.name }}</h5>
+                        <p class="text-muted small">{{ product.description|truncatewords:20 }}</p>
+                        <a href="{% url 'product_detail' product.pk %}" class="btn call-btn rounded-pill px-4 btn-sm">
+                            View Details <i class="fa-solid fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <p class="text-muted">Products coming soon!</p>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-5" data-aos="fade-up">
+            <a href="{% url 'products' %}" class="btn btn-outline-primary rounded-pill px-5 py-3 fw-bold" style="border-color: var(--deep-blue); color: var(--deep-blue);">
+                View All Products <i class="fa-solid fa-arrow-right ms-2"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ======== WAVE DIVIDER ======== -->
+<div class="wave-divider">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+        <path fill="var(--light)" d="M0,40 C360,100 1080,0 1440,60 L1440,100 L0,100 Z" style="fill: #F0F8FF;"></path>
+    </svg>
+</div>
+
+<!-- ======== WHY CHOOSE US ======== -->
+<section class="py-5" style="background: white;">
+    <div class="container py-5">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="section-title">Why Choose Us?</h2>
+            <p class="section-subtitle">We deliver excellence at every step of your water purification journey.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+                <div class="why-card">
+                    <div class="why-card-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h5 class="fw-bold mb-3">Certified Quality</h5>
+                    <p class="text-muted small">All our products meet the highest international quality and safety standards for water purification.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="why-card">
+                    <div class="why-card-icon">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <h5 class="fw-bold mb-3">24/7 Support</h5>
+                    <p class="text-muted small">Our dedicated support team is available round the clock to assist you with any queries or service needs.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                <div class="why-card">
+                    <div class="why-card-icon">
+                        <i class="fa-solid fa-indian-rupee-sign"></i>
+                    </div>
+                    <h5 class="fw-bold mb-3">Best Prices</h5>
+                    <p class="text-muted small">Premium water purification solutions at competitive prices, ensuring great value for your investment.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                <div class="why-card">
+                    <div class="why-card-icon">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                    </div>
+                    <h5 class="fw-bold mb-3">Expert Installation</h5>
+                    <p class="text-muted small">Professional installation by certified technicians ensuring optimal performance of your water system.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ======== WAVE DIVIDER ======== -->
+<div class="wave-divider">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+        <path fill="#0A4A6E" d="M0,40 C360,100 1080,0 1440,60 L1440,100 L0,100 Z"></path>
+    </svg>
+</div>
+
+<!-- ======== TESTIMONIALS ======== -->
+<section class="testimonial-section">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="section-title text-white">What Our Clients Say</h2>
+            <p class="section-subtitle text-white-50">Real stories from real customers who trust Maya Aqua.</p>
+        </div>
+        <div class="row g-4">
+            {% for testimonial in testimonials %}
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        {% for i in "12345" %}
+                            {% if forloop.counter <= testimonial.rating %}
+                                <i class="fa-solid fa-star"></i>
+                            {% else %}
+                                <i class="fa-regular fa-star"></i>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <p class="mb-0" style="opacity: 0.9;">{{ testimonial.message }}</p>
+                    <p class="testimonial-name">— {{ testimonial.name }}</p>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="mb-0" style="opacity: 0.9;">Excellent water purifier! The yellow water problem is completely gone. Highly recommend Maya Aqua.</p>
+                    <p class="testimonial-name">— Rajesh Kumar</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="mb-0" style="opacity: 0.9;">Great service and support. They installed our commercial RO system within a day. Professional team!</p>
+                    <p class="testimonial-name">— Priya Sharma</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="mb-0" style="opacity: 0.9;">Best water softener plant we've ever used. The quality of water is now crystal clear. Thank you Maya Aqua!</p>
+                    <p class="testimonial-name">— Arun Patel</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ======== WAVE DIVIDER ======== -->
+<div class="wave-divider wave-divider-flip">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+        <path fill="#0A4A6E" d="M0,40 C360,100 1080,0 1440,60 L1440,100 L0,100 Z"></path>
+    </svg>
+</div>
+
+<!-- ======== GALLERY PREVIEW ======== -->
+<section class="py-5" style="background: var(--light);">
+    <div class="container py-5">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="section-title">Our Gallery</h2>
+            <p class="section-subtitle">See our installations and products in action across homes and businesses.</p>
+        </div>
+        <div class="row g-4">
+            {% for image in gallery_images %}
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00">
+                <div class="gallery-item">
+                    {% if image.image %}
+                    <img src="{{ image.image.url }}" alt="{{ image.caption }}">
+                    {% else %}
+                    <img src="https://picsum.photos/600/400?random={{ forloop.counter|add:10 }}" alt="{{ image.caption }}">
+                    {% endif %}
+                    <div class="gallery-overlay">
+                        <p>{{ image.caption }}</p>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/600/400?random=11" alt="RO Installation">
+                    <div class="gallery-overlay">
+                        <p>RO System Installation</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/600/400?random=12" alt="Softener Plant">
+                    <div class="gallery-overlay">
+                        <p>Water Softener Plant</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/600/400?random=13" alt="Commercial Filter">
+                    <div class="gallery-overlay">
+                        <p>Commercial Filtration</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-5" data-aos="fade-up">
+            <a href="{% url 'gallery' %}" class="btn btn-outline-primary rounded-pill px-5 py-3 fw-bold" style="border-color: var(--deep-blue); color: var(--deep-blue);">
+                View Full Gallery <i class="fa-solid fa-images ms-2"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ======== WAVE DIVIDER ======== -->
+<div class="wave-divider">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+        <path fill="#1D9E75" d="M0,40 C360,100 1080,0 1440,60 L1440,100 L0,100 Z"></path>
+    </svg>
+</div>
+
+<!-- ======== WHATSAPP CTA ======== -->
+<section class="whatsapp-cta">
+    <div class="container" data-aos="fade-up">
+        <h2>Need Help Choosing?</h2>
+        <p class="mb-4" style="font-size: 1.15rem; opacity: 0.9;">Our experts are just a message away. Get personalized recommendations for your water purification needs.</p>
+        <a href="https://wa.me/{% if company %}{{ company.whatsapp }}{% else %}919876543210{% endif %}" target="_blank" class="whatsapp-btn">
+            <i class="fa-brands fa-whatsapp fa-lg"></i> Chat on WhatsApp
+        </a>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Parallax scroll effect for hero content
+    window.addEventListener('scroll', () => {
+        const hero = document.querySelector('.hero-content');
+        if (hero) {
+            hero.style.transform = `translateY(${window.scrollY * 0.4}px)`;
+        }
+    });
+
+    // Counter animation with IntersectionObserver
+    const counters = document.querySelectorAll('.stat-number');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = parseInt(el.getAttribute('data-target'));
+                let current = 0;
+                const increment = Math.ceil(target / 60);
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    el.textContent = current + '+';
+                }, 30);
+                observer.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+    counters.forEach(c => observer.observe(c));
+</script>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Us - Maya Aqua Solutions{% endblock %}
+{% block meta_desc %}Pioneering water purification in Chennai for over 20 years. Specialists in RO systems and softeners.{% endblock %}
+{% block content %}
+<section class="pt-5 mt-5">
+    <div class="container pt-5">
+        <div class="row align-items-center mt-5 mb-5 pb-5">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <span class="text-primary fw-bold text-uppercase tracking-wide small"><i class="fa-solid fa-info-circle"></i> About Maya Aqua</span>
+                <h2 class="display-4 fw-bold mt-2 mb-4">Pioneering Water <br><span class="text-gradient">Purification</span></h2>
+                <p class="lead text-muted mb-4">Welcome to Maya Aqua, an innovative industry leader dedicated to solving all your water quality concerns. We transform dangerous yellow water into pure, clean white water.</p>
+                <p class="text-muted mb-4">With years of expertise, we specialize in advanced Reverse Osmosis (RO) systems, commercial and residential water filtration, and robust softener plants. We believe clean water is not a luxury, but a fundamental right.</p>
+                
+                <div class="row mt-5">
+                    <div class="col-6 mb-3">
+                        <div class="d-flex align-items-start">
+                            <i class="fa-solid fa-check-circle text-primary fa-2x me-3"></i>
+                            <div>
+                                <h5 class="fw-bold">{% if company %}{{ company.stats_years_experience }}{% else %}20{% endif %}+ Years</h5>
+                                <p class="text-muted small">Of Excellence</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-3">
+                         <div class="d-flex align-items-start">
+                            <i class="fa-solid fa-users text-primary fa-2x me-3"></i>
+                            <div>
+                                <h5 class="fw-bold">1000+</h5>
+                                <p class="text-muted small">Happy Clients</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 relative">
+                <div class="position-relative" style="border-radius: 30px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.1);">
+                    <img src="https://picsum.photos/600/400?random=14" alt="Water Purity" class="img-fluid" style="object-fit:cover; width:100%; height:500px;">
+                    <div class="position-absolute bottom-0 start-0 p-4" style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); width: 100%;">
+                        <h4 class="text-white fw-bold m-0"><i class="fa-solid fa-leaf"></i> Eco-Friendly Solutions</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

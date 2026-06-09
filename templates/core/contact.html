@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact Us - Maya Aqua Solutions{% endblock %}
+{% block meta_desc %}Get in touch with Maya Aqua Solutions for the best water purifiers and RO plants in Chennai. Call +91 7550208154.{% endblock %}
+
+{% block content %}
+
+<!-- ======== PAGE HEADER ======== -->
+<section class="page-header">
+    <div class="container" data-aos="fade-up">
+        <h1>Contact Us</h1>
+        <p>We are here to help you get the purest water possible. Get in touch with our team today!</p>
+    </div>
+</section>
+
+<!-- ======== CONTACT SECTION ======== -->
+<section class="py-5" style="background: var(--light);">
+    <div class="container py-4">
+        <!-- Message Alerts -->
+        {% if messages %}
+        <div class="row">
+            <div class="col-12 mb-4">
+                {% for message in messages %}
+                <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible fade show rounded-4 shadow-sm" role="alert">
+                    <i class="fa-solid {% if message.tags == 'error' %}fa-circle-xmark{% else %}fa-circle-check{% endif %} me-2"></i>
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="row g-5">
+            <!-- Left Side: Form -->
+            <div class="col-lg-6" data-aos="fade-right">
+                <div class="contact-form-card">
+                    <h3 class="fw-bold mb-4" style="color: var(--dark);">Send us a Message</h3>
+                    <form method="POST" action="{% url 'contact' %}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="id_name" class="form-label text-muted small fw-bold">Full Name</label>
+                            <input type="text" name="name" id="id_name" class="form-control" placeholder="John Doe" required>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="id_phone" class="form-label text-muted small fw-bold">Phone Number</label>
+                                <input type="tel" name="phone" id="id_phone" class="form-control" placeholder="+91 9876543210" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="id_email" class="form-label text-muted small fw-bold">Email Address</label>
+                                <input type="email" name="email" id="id_email" class="form-control" placeholder="john@example.com" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_city" class="form-label text-muted small fw-bold">City / Area</label>
+                            <input type="text" name="city" id="id_city" class="form-control" placeholder="Porur, Chennai" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="id_message" class="form-label text-muted small fw-bold">Message / Requirements</label>
+                            <textarea name="message" id="id_message" class="form-control" rows="5" placeholder="Please describe your water issues or the RO/Softener plant capacity you require..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn call-btn w-100 py-3 text-white fw-bold rounded-pill">
+                            Submit Enquiry <i class="fa-solid fa-paper-plane ms-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Right Side: Contact Details & Google Maps -->
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="contact-info-card">
+                    <h3 class="fw-bold mb-4 text-white">Get in Touch</h3>
+                    <p class="text-white-50 mb-4">Have any questions or need service for your existing water system? Contact us directly or visit our office.</p>
+
+                    <!-- Contact Details -->
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fa-solid fa-location-dot text-white"></i>
+                        </div>
+                        <div>
+                            <h6 class="mb-1 fw-bold text-white">Our Address</h6>
+                            <p class="mb-0 text-white-50">
+                                {% if company %}{{ company.address }}{% else %}6/35, Astalakshmi Nagar, 2nd Street, Porur, Chennai - 600 116{% endif %}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fa-solid fa-phone text-white"></i>
+                        </div>
+                        <div>
+                            <h6 class="mb-1 fw-bold text-white">Call Us</h6>
+                            <p class="mb-0">
+                                <a href="tel:{% if company %}{{ company.phone }}{% else %}+917550208154{% endif %}" class="text-white-50 text-decoration-none">
+                                    {% if company %}{{ company.phone }}{% else %}+91 7550208154{% endif %}
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fa-solid fa-envelope text-white"></i>
+                        </div>
+                        <div>
+                            <h6 class="mb-1 fw-bold text-white">Email Us</h6>
+                            <p class="mb-0">
+                                <a href="mailto:{% if company %}{{ company.email }}{% else %}mayaaqua26@gmail.com{% endif %}" class="text-white-50 text-decoration-none">
+                                    {% if company %}{{ company.email }}{% else %}mayaaqua26@gmail.com{% endif %}
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- WhatsApp CTA Button -->
+                    <div class="mt-4 mb-4">
+                        <a href="https://wa.me/{% if company %}{{ company.whatsapp }}{% else %}917550208154{% endif %}" target="_blank" class="btn btn-light text-success fw-bold rounded-pill px-4 py-3 shadow-sm w-100 text-center" style="border: none;">
+                            <i class="fa-brands fa-whatsapp fa-xl me-2"></i> Chat on WhatsApp
+                        </a>
+                    </div>
+
+                    <!-- Google Maps Embed -->
+                    <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow-sm" style="border: 2px solid rgba(255,255,255,0.1);">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.9749174095405!2d80.15582967590823!3d13.03726581345598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5260dec5698b67%3A0x89ee1d33190df0e5!2sPorur%2C%20Chennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
