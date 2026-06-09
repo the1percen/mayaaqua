@@ -80,7 +80,7 @@ WSGI_APPLICATION = "mayaaqua_proj.wsgi.application"
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL', f'sqlite:///{BASE_DIR}/db.sqlite3')
+        default=config('DATABASE_URL', default='postgresql://postgres:MayaAqua123@db.rilmbznpiktfemshwmrb.supabase.co:5432/postgres')
     )
 }
 
